@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require 'getup'
+require 'optparse'
+
+options = {}
+banner = nil
+
+# set the default option is none are given
+#
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{__FILE__} [options]"
+
+  opts.on("-i ", "--interval time", "timer in seconds") do |i|
+    options[:interval] = i
+  end
+
+  opts.on("-n ", "--name timer", "name of timer") do |n|
+    options[:name] = n
+  end
+
+  opts.on("-m ", "--message msg", "alert message") do |m|
+    options[:message] = m
+  end
+
+
+
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+  #set current options
+  banner = opts
+
+end.parse!
+
+if options.empty?
+  puts banner
+  exit
+end
+
+timer = Getup::Timer.start(name: options.fetch(:name){ foo }, 
+                           interval: options.fetch(:interval){ 1 },
+                           message: options.fetch(:message){ "Get Up!"}) 
+p timer
+
+
+
+
