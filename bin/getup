@@ -24,8 +24,10 @@ OptionParser.new do |opts|
     options[:message] = m
   end
 
-
-
+  opts.on("-k", "--kill", "kill the current timer") do |k|
+    #Process.kill("USR1", @@pid)
+    #Getup::Process.kill
+  end
 
   opts.on_tail("-h", "--help", "Show this message") do
     puts opts
@@ -41,11 +43,14 @@ if options.empty?
   exit
 end
 
+
 timer = Getup::Timer.new(name: options.fetch(:name){ foo }, 
                          interval: options.fetch(:interval){ 1 },
                          message: options.fetch(:message){ "Get Up!"}) 
-
-timer.start
+pid = fork do
+  timer.start
+end
+Process.detach(pid)
 
 
 
