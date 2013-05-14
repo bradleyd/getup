@@ -1,6 +1,6 @@
 # Getup
 
-TODO: Write a gem description
+ A simple command line timer that uses libnotify to alert when to get up.
 
 ## Installation
 
@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+gem install getup
+```
+
+```ruby
+# -n name     -- name of timer
+# -m message  -- alert message to be displayed when timer expires
+# -i interval -- time is in seconds
+
+getup -n foobar -m "get up!" -i 200
+
+```
 
 ## Contributing
 
