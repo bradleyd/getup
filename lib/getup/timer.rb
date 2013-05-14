@@ -12,6 +12,7 @@ module Getup
     def start
       timer_lib.after(@interval.to_f) { puts @message}
       timer_lib.wait
+      "timer started"
     end
 
     def stop
