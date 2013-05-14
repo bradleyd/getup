@@ -1,6 +1,6 @@
 require "getup/version"
+require "getup/notify"
 require "getup/timer"
 
 module Getup
-  # Your code goes here...
 end
