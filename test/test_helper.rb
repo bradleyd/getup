@@ -1,5 +1,5 @@
 require "minitest/autorun"
 require "minitest/pride"
 
-require File.expand_path '../../getup.rb', __FILE__
+require File.expand_path '../../lib/getup.rb', __FILE__
 

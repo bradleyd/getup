@@ -41,10 +41,11 @@ if options.empty?
   exit
 end
 
-timer = Getup::Timer.start(name: options.fetch(:name){ foo }, 
-                           interval: options.fetch(:interval){ 1 },
-                           message: options.fetch(:message){ "Get Up!"}) 
-p timer
+timer = Getup::Timer.new(name: options.fetch(:name){ foo }, 
+                         interval: options.fetch(:interval){ 1 },
+                         message: options.fetch(:message){ "Get Up!"}) 
+
+timer.start
 
 
 
