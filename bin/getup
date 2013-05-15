@@ -8,7 +8,6 @@ options = {}
 banner = nil
 
 # set the default option is none are given
-#
 OptionParser.new do |opts|
   opts.banner = "Usage: #{__FILE__} [options]"
 
@@ -25,8 +24,12 @@ OptionParser.new do |opts|
   end
 
   opts.on("-k", "--kill", "kill the current timer") do |k|
-    #Process.kill("USR1", @@pid)
-    #Getup::Process.kill
+    Getup::Process.kill_timer
+    exit
+  end
+
+  opts.on("-r", "--repeat", "repeat the current timer forever") do |r|
+    options[:repeat] = true
   end
 
   opts.on_tail("-h", "--help", "Show this message") do
@@ -44,14 +47,10 @@ if options.empty?
 end
 
 
-timer = Getup::Timer.new(name: options.fetch(:name){ foo }, 
-                         interval: options.fetch(:interval){ 1 },
-                         message: options.fetch(:message){ "Get Up!"}) 
-pid = fork do
-  timer.start
-end
-Process.detach(pid)
+getup = Getup::Init.new(name: options.fetch(:name){ foo }, 
+                        interval: options.fetch(:interval){ 10 },
+                        message: options.fetch(:message){ "Get Up!"},
+                        repeat: options.fetch(:repeat) { false }) 
 
-
-
+getup.run
 

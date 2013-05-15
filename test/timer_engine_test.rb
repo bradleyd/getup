@@ -1,11 +1,11 @@
 require_relative "test_helper"
-require 'timers'
-class TestGetup < Minitest::Test
+
+class TestTimerEngine < Minitest::Test
   def setup
-    @getup = Getup::Timer.new(timer_lib: Timers.new, 
-                              name: 'foo', 
-                              interval: 1, 
-                              message: 'woot')
+    @getup = Getup::TimerEngine.new(name: 'foo', 
+                                    interval: 10, 
+                                    message: 'woot',
+                                    repeat: false)
   end
 
   def test_schedule_responds_to_start
