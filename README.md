@@ -26,10 +26,15 @@ gem install getup
 # -n name     -- name of timer
 # -m message  -- alert message to be displayed when timer expires
 # -i interval -- time is in seconds
+# -r          -- repeat timer every n(interval) seconds
 # -k          -- kill the current getup timer
 
-getup -n foobar -m "get up!" -i 200
+getup -n foobar -m "get up!" -i 200 -r
 
+```
+
+```ruby
+getup -k
 ```
 
 ## Contributing
