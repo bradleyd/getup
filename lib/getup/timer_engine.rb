@@ -14,7 +14,7 @@ module Getup
 
     def start
       @repeat ? repeat : one_time
-      puts "timer started"
+      "timer started"
     end
 
     def stop
